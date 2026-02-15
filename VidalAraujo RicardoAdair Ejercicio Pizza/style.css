@@ -1,0 +1,41 @@
+body {
+    background-image: url('./assets/fondo.jpg');
+    font-family: sans-serif;
+}
+
+.container {
+    margin: 50px auto;
+    text-align: center;
+    width: 500px;
+    display: block;
+}
+
+#description {
+    background-color: white;
+    padding: 30px;
+}
+
+#description h1 {
+    font-size: 30px;
+    text-align: center;
+    color: black;
+    padding-bottom: 10px;
+    border-bottom: 2px dotted lightgray;
+    margin-bottom: 20px;
+}
+
+#description p {
+    font-size: 12px;
+    text-align: left;
+    color: gray;
+    padding-bottom: 5px;
+}
+
+#view{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    font-size:medium;
+    cursor: pointer; /* Solo es para distinguir que funciona */
+}
