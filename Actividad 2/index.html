@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Formulario de prueba de HTML5</title>
+</head>
+<body>
+    <h1>Actividad 2 | Ricardo Adair Vidal Araujo</h1>
+    
+    <form action="" method="GET">
+        <label for="nombre" style="margin-right: 50px;">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" size=40 required>
+        <br>
+        <br>
+        <label for="email" style="margin-right: 48px;">Correo Electronico:</label>
+        <input type="email" id="email" name="email" size="40" required >
+        <br>
+        <br>
+        <label for="url" style="margin-right: 138px;">URL:</label>
+        <input type="url" id="url" name="url" placeholder="Escribe la URL de tu página web personal" size="40">
+        <br>
+        <br>
+        <label for="fecha" style="margin-right: 132px;">Fecha:</label>
+        <input type="date" id="fecha" name="fecha">
+        <br>
+        <br>
+        <label for="tiempo" style="margin-right: 122px;">Tiempo:</label>
+        <input type="time" id="tiempo" name="tiempo">
+        <br>
+        <br>
+        <label for="datetime" style="margin-right: 89px;">Fecha y hora:</label>
+        <input type="datetime-local" id="datetime" name="datetime">
+        <!-- Si no le pongo el "-local" a datetime no funciona y aparte es lo que me recomienda el snippet que tengo instalado-->
+        <br>
+        <br>
+        <label for="mes" style="margin-right: 144px;">Mes:</label>
+        <input type="month" id="mes" name="mes">
+        <br>
+        <br>
+        <label for="semana" style="margin-right: 120px;">Semana:</label>
+        <input type="week" id="semana" name="semana">
+        <br>
+        <br>
+        <label for="numero" style="margin-right: 120px;">Numero:</label>
+        <input type="number" id="numero" name="numero" min="-10" max="10">
+        <br>
+        <br>    
+        <label for="telefono" style="margin-right: 115px;">Telefono:</label>
+        <input type="tel" id="telefono" name="telefono" size="40">
+        <br>
+        <br>
+        <label for="busqueda" style="margin-right: 33px;">Termino de busqueda:</label>
+        <input type="search" id="busqueda" name="busqueda">
+        <br>
+        <br>
+        <label for="color" style="margin-right: 79px;">Color favorito:</label>
+        <input type="color" id="color" name="color">
+        <br>
+        <br>
+        <button type="submit" style="
+        margin-left: 178px; 
+        padding: 10px 10px;
+        width: 305px;
+        background-color: rgb(19, 112, 31);
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        ">Enviar</button>
+        <!-- Probando estilos del boton nada mas -->
+
+</body>
+</html>
