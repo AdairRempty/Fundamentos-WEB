@@ -1,0 +1,56 @@
+body {
+    background-color: white;
+}
+
+.card {
+    margin: 50px auto;
+    width: 700px;
+    height: auto;
+    text-align: center;
+    font-family: 'Times New Roman';
+    display: block;
+}
+
+#content {
+    width: 35%;
+    float: left;
+    position: relative;
+}
+
+li {
+    list-style: none;
+    padding-bottom: 15px;
+    font-family: arial;
+}
+
+#image img {
+    width: 50%;
+    height: auto;
+    display: block;
+    float: right;
+    padding: 0% 5% 5% 5%;
+}
+
+#anot {
+    padding-bottom: 10px;
+    font-style: italic;
+    font-family: Arial;
+}
+
+#reserva {
+    padding: 10px 10px 10px 10px;
+    background-color: black;
+    color: white;
+    width: 80%;
+    font-variant: small-caps;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: black;
+
+}
