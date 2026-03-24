@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Actividad Contenedor Flex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 650px;
+        }
+
+        header {
+            background-color: #e79435;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-weight: bold;
+            font-size: 24px;
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .lateral-izquierdo {
+            flex: 1;
+            background-color: #4a4a4a;
+            display: flex;
+            padding: 5%;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .zona-central {
+            flex: 2;
+            background-color: #ffffff;
+            display: flex;
+            padding: 5%;
+            justify-content: center;
+            color: #333333;
+            font-size: 18px;
+        }
+
+        .lateral-derecho {
+            flex: 1;
+            background-color: #4a4a4a;
+            display: flex;
+            padding: 5%;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Titulo de la página</h1>
+    </header>
+    <div class="container">
+        <div class="lateral-izquierdo">Lateral izquierdo</div>
+        <div class="zona-central">Zona central</div>
+        <div class="lateral-derecho">Lateral derecho</div>
+    </div>
+</body>
+</html>
