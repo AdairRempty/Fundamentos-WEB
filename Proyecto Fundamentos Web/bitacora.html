@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Bitácora</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin_style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <div class="dashboard-grid">
+        <ecotrack-sidebar role="admin" active-page="bitacora"></ecotrack-sidebar>
+
+        <!-- Main Content -->
+        <main>
+            <div class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button id="menuToggle" class="menu-toggle"><i class="ph ph-list"></i></button>
+                    <div>
+                        <h2>Bitácora</h2>
+                        <p style="font-size:0.8rem; color:var(--text-light); margin:0;">Entradas y Salidas — Formato
+                            DNORM</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span id="topbarUserName">Usuario Autorizado</span>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1rem;">Cerrar Sesión</a>
+                </div>
+            </div>
+
+            <div class="main-content">
+
+                <!-- === PANEL: GENERAR SALIDA === -->
+                <div class="dashboard-card animate-up" style="border-left: 4px solid #C62828;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <div>
+                            <h3 style="color:#C62828;"><i class="ph ph-arrow-up-right"></i> Registrar Salida</h3>
+                            <p style="font-size:0.85rem; margin-top:0.2rem;">Busca una entrada existente, selecciónala y
+                                genera el movimiento de salida correspondiente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Filtros de búsqueda -->
+                    <div class="search-panel">
+                        <div>
+                            <label>Fecha de entrada</label>
+                            <input type="date" id="filtro_fecha" class="form-control">
+                        </div>
+                        <div>
+                            <label>Empresa Generadora</label>
+                            <input type="text" id="filtro_empresa" class="form-control"
+                                placeholder="Nombre de empresa..." style="min-width:200px;">
+                        </div>
+                        <div>
+                            <label>Material / Residuo</label>
+                            <input type="text" id="filtro_material" class="form-control"
+                                placeholder="Nombre del residuo..." style="min-width:200px;">
+                        </div>
+                        <button class="btn btn-primary" onclick="buscarEntradas()"><i
+                                class="ph ph-magnifying-glass"></i> Buscar Entradas</button>
+                    </div>
+
+                    <!-- Resultados de búsqueda -->
+                    <div id="entradasResultPanel" style="display:none;">
+                        <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:0.75rem;"><i
+                                class="ph ph-info"></i> Haz clic en una fila para seleccionarla y luego presiona
+                            "Generar Salida".</p>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha Entrada</th>
+                                        <th>Empresa Generadora</th>
+                                        <th>Residuo</th>
+                                        <th>Código</th>
+                                        <th>Cantidad (kg)</th>
+                                        <th>Folio</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="entradasTableBody">
+                                    <tr>
+                                        <td colspan="6" style="text-align:center;">Realiza una búsqueda para ver
+                                            resultados.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:right; margin-top:1rem;">
+                            <button class="btn btn-primary" id="btnGenerarSalida"
+                                style="background:linear-gradient(135deg,#C62828,#E53935); box-shadow:0 4px 15px rgba(198,40,40,0.3); opacity:0.5; pointer-events:none;"
+                                onclick="abrirModalSalida()">
+                                <i class="ph ph-arrow-up-right"></i> Generar Salida del Movimiento Seleccionado
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla bitacora -->
+                <div class="dashboard-card animate-up" style="animation-delay:0.1s;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <h3>Historial Completo</h3>
+                        <div style="margin-bottom: 0; display: flex; justify-content: flex-end;">
+                            <input type="text" class="table-search form-control" data-target="bitacoraTableBody"
+                                placeholder="Buscar en bitácora..." style="max-width: 300px;">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Movimiento</th>
+                                    <th>Residuo</th>
+                                    <th>Cantidad (Kg)</th>
+                                    <th>Origen / Destino</th>
+                                    <th>Manifiesto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bitacoraTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">Cargando bitácora...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+    <script src="js/components/sidebar.js"></script>
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/molecules/tables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/bitacora.js"></script>
+
+    <!-- Modal Generar Salida -->
+    <div class="modal-overlay" id="salidaModal">
+        <div class="modal-box" style="max-width:560px;">
+            <div class="modal-header" style="background:linear-gradient(135deg,#b71c1c,#e53935);">
+                <div>
+                    <h2><i class="ph ph-arrow-up-right"></i> Registrar Movimiento de Salida</h2>
+                    <p id="salida_desc">Folio relacionado: —</p>
+                </div>
+                <button class="modal-close" onclick="cerrarModalSalida()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-list-dashes"></i> Resumen de la Entrada
+                        Seleccionada</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Residuo</label><span id="s_residuo">—</span></div>
+                        <div class="manifest-field"><label>Código</label><span id="s_codigo">—</span></div>
+                        <div class="manifest-field"><label>Empresa Generadora</label><span id="s_empresa">—</span></div>
+                        <div class="manifest-field"><label>Cantidad Recibida (kg)</label><span
+                                id="s_cantidad_entrada">—</span></div>
+                    </div>
+                </div>
+
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-pencil"></i> Datos de la Salida</div>
+                    <div style="padding: 1rem; display:flex; flex-direction:column; gap:1rem;">
+                        <div>
+                            <label
+                                style="font-size:0.8rem; font-weight:600; color:var(--text-light); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Fecha
+                                de Salida *</label>
+                            <input type="date" id="s_fecha_salida" class="form-control"
+                                style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border);">
+                        </div>
+                        <div>
+                            <label
+                                style="font-size:0.8rem; font-weight:600; color:var(--text-light); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Cantidad
+                                a Registrar como Salida (kg) *</label>
+                            <input type="number" id="s_cantidad_salida" class="form-control" placeholder="Ej. 150.00"
+                                step="0.01" min="0.01"
+                                style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border);">
+                        </div>
+                        <div>
+                            <label
+                                style="font-size:0.8rem; font-weight:600; color:var(--text-light); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Destino
+                                Final *</label>
+                            <input type="text" id="s_destino" class="form-control"
+                                placeholder="Ej. Empresa de tratamiento / Disposición final"
+                                style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border);">
+                        </div>
+                        <div>
+                            <label
+                                style="font-size:0.8rem; font-weight:600; color:var(--text-light); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Observaciones</label>
+                            <textarea id="s_observaciones" class="form-control" rows="2"
+                                placeholder="Notas adicionales sobre la salida..."
+                                style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border); resize:vertical;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="cerrarModalSalida()"><i class="ph ph-x"></i> Cancelar</button>
+                <button class="btn btn-primary" style="background:linear-gradient(135deg,#C62828,#E53935);"
+                    onclick="confirmarSalida()"><i class="ph ph-check"></i> Confirmar Salida</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

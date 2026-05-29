@@ -1,0 +1,10 @@
+/* Tarjeta de formulario */
+.form-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem;
+}
+
+.form-card h2 {
+  margin-bottom: 0.5rem;
+}

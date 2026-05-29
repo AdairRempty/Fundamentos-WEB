@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Solicitud de Registro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body style="padding: 4rem 1rem;">
+    <div class="container glass-panel animate-up" style="max-width: 700px; padding: 2rem; min-width: 320px;">
+        <a href="index.html" style="display: block; text-align: center; margin-bottom: 2rem;">
+            <div class="nav-brand" style="justify-content: center;">
+                <i class="ph-fill ph-leaf"></i> EcoTrack
+            </div>
+        </a>
+
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+            <h2>Registro de Proveedor / Cliente</h2>
+            <p>Por favor completa los datos fiscales para solicitar el alta al centro de acopio.</p>
+        </div>
+
+        <form id="registroForm">
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>Razón Social (Empresa)</label>
+                    <input type="text" id="reg_razon" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>RFC</label>
+                    <input type="text" id="reg_rfc" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Giro de la Empresa</label>
+                    <select id="reg_giro" class="form-control" required>
+                        <option value="">Selecciona giro...</option>
+                        <option value="Generador">Generador Industrial</option>
+                        <option value="Transportista">Transportista</option>
+                        <option value="Destino">Destino Final</option>
+                        <option value="Comercial">Comercial</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre del Contacto (Representante)</label>
+                    <input type="text" id="reg_contacto" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="reg_email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="reg_password" class="form-control" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Dirección Fiscal</label>
+                    <input type="text" id="reg_direccion" class="form-control" required style="resize: vertical; min-height: 80px; max-height: 150px;">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem;">Enviar Solicitud</button>
+            </div>
+            
+        </form>
+
+        <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem;">
+            <a href="login.html" style="color: var(--text-light); text-decoration: underline;">Volver al login</a>
+        </p>
+    </div>
+
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/auth.js"></script>
+</body>
+</html>

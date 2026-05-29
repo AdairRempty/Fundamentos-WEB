@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Portal de Cliente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin_style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="dashboard-grid">
+        <ecotrack-sidebar role="client" active-page="usuarios"></ecotrack-sidebar>
+
+        <!-- Main Content -->
+        <main>
+            <ecotrack-topbar title="Portal de Cliente"></ecotrack-topbar>
+            
+            <div class="main-content">
+                <div class="dashboard-card animate-up">
+                    <h3 style="margin-bottom: 0.5rem;">Invitar Nuevo Empleado</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Crea cuentas para tu personal operativo (Choferes/Administrativos). Solo verán operaciones de tu empresa.</p>
+                    <form id="usuarioForm" class="form-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <input type="email" id="usu_email" class="form-control" placeholder="Correo Electrónico *" required>
+                        </div>
+                        <div>
+                            <input type="password" id="usu_pass" class="form-control" placeholder="Contraseña temporal *" required>
+                        </div>
+                        <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn-primary"><i class="ph ph-user-plus"></i> Habilitar Acceso</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="dashboard-card animate-up" style="animation-delay: 0.1s;">
+                    <h3>Personal Registrado</h3>
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;"><input type="text" class="table-search form-control" data-target="usuariosTableBody" placeholder="Buscar empleado..." style="max-width: 300px;"></div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>ID</th><th>Empresa Relacionada</th><th>Credencial (Email)</th><th>Permisos</th></tr></thead>
+                            <tbody id="usuariosTableBody">
+                                <tr><td colspan="4" style="text-align: center;">Cargando plantilla de usuarios...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/components/sidebar.js"></script>
+    <script src="js/components/topbar.js"></script>
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/molecules/tables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/admin-usuarios.js"></script>
+</body>
+</html>

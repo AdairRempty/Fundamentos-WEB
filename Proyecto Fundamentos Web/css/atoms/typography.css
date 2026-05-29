@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Tipografia y fuentes */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+  color: inherit; /*inherit trae el color de la clase padre*/
+  transition: var(--transition);
+}
+p {
+  color: var(--text-light);
+}
+
+/* Títulos de sección */
+.title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--primary-dark);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

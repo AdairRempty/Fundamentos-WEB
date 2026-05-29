@@ -1,0 +1,70 @@
+<!-- DISCLAIMER: Todos los estilos y animaciones de este proyecto los saque de fuentes libres en linea con la IA de Gemini 3.1, la razon fue que es mas sencillo implementarlos de esta forma que hacerlo manualmente unicamente para darle un toque estetico mejor del que hubiera logrado a mano.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Gestión Ambiental Inteligente</title>
+    <!-- Estilos, los encontre gracias a la IA de GEMINI en navegador, para agilizar el desarrollo -->
+     <description>Desarrollado por Ricardo Adair Vidal Araujo, proyecto final de Fundamentos de desarrollo web.</description>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <ecotrack-navbar></ecotrack-navbar>
+
+<!-- Como este proyecto lo tome a base de la empresa en la que trabajo investigue con la ayuda de la IA como estaba hecha la pagina y su primer carrusel estaba puesto a mitad de patnalla, denominado como hero section, asi que aqui solo copie el estilo -->
+    <section class="hero">
+        <div class="hero-content animate-up">
+            <h1>El futuro del reciclaje es digital</h1>
+            <p>Plataforma integral para empresas y transportistas. Registra tus manifiestos de manejo especial, lleva control de tus vehículos y mantente al día con la normativa.</p>
+            <div class="hero-actions">
+                <a href="registro.html" class="btn btn-primary">Solicitar Registro</a>
+                <a href="#servicios" class="btn btn-outline">Conocer más <i class="ph ph-arrow-down"></i></a>
+            </div>
+        </div>
+
+        <!-- Carrusel decorativo en el Home 
+         Si ya se que solo tiene un item pero aqui iba a poner imagenes, y no el diseño de gradiente no se me ocurrio a mi lo genero Gemini en lo que encontraba imagenes -->
+        <div class="hero-visual glass-panel animate-up" style="animation-delay: 0.2s; padding: 1rem;">
+            <div class="carousel" id="homeCarousel" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, var(--primary), var(--secondary));">
+                <div style="text-align: center; color: white;">
+                    <i class="ph ph-recycle" style="font-size: 5rem; margin-bottom: 1rem;"></i>
+                    <h2>Gestión Ambiental</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="container mt-2" style="padding: 1rem 0;">
+        <div class="text-center mb-2">
+            <h2>Nuestros Servicios y Catálogo</h2>
+            <p>Materiales aceptados en nuestro centro de acopio</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <!-- Tarjetas de Info -->
+            <div class="glass-panel" style="padding: 2rem; text-align: center;">
+                <i class="ph-fill ph-package" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Cartón y Papel</h3>
+                <p>Manejo adecuado de papel archivo y cartón corrugado comercial.</p>
+            </div>
+            <div class="glass-panel" style="padding: 2rem; text-align: center;">
+                <i class="ph-fill ph-beer-bottle" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Plásticos PET</h3>
+                <p>Recolección y prensado de plásticos industriales.</p>
+            </div>
+            <div class="glass-panel" style="padding: 2rem; text-align: center;">
+                <i class="ph-fill ph-drop" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Aceites Usados</h3>
+                <p>Disposición segura y certificada de aceites industriales y de calidad especial.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- El navbar es un .js asi que no tiene un html propio -->
+    <script src="js/components/navbar.js"></script>
+    <script src="js/main.js?v=9"></script>
+</body>
+</html>

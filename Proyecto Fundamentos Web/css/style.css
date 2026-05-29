@@ -1,0 +1,25 @@
+/* 1. Atomos */
+@import url("atoms/variables.css");
+@import url("atoms/typography.css");
+@import url("atoms/buttons.css");
+@import url("atoms/animations.css");
+@import url("atoms/utilities.css");
+@import url("atoms/forms.css");
+
+/* 2. Moleculas */
+@import url("molecules/glass-panel.css");
+@import url("molecules/form-card.css");
+
+/* 3. Organismos */
+@import url("organisms/navbar.css");
+@import url("organisms/hero.css");
+@import url("organisms/data-table.css");
+@import url("organisms/modal.css");
+@import url("organisms/sidebar.css");
+@import url("organisms/topbar.css");
+
+/* 4. Plantillas */
+@import url("templates/layout.css");
+
+/* 5. Responsividad de las paginas */
+@import url("pages/responsive.css");

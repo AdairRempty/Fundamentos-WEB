@@ -1,0 +1,17 @@
+:root {
+  --primary: #2e7d32;
+  --primary-light: #4caf50;
+  --primary-dark: #1b5e20;
+  --secondary: #81c784;
+  --accent: #f9a825;
+  --bg-color: #f4f9f5;
+  --text-main: #2c3e50;
+  --text-light: #546e7a;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-solid: #ffffff;
+  --border: rgba(46, 125, 50, 0.15);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 48px rgba(46, 125, 50, 0.15);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

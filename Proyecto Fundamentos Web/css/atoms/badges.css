@@ -1,0 +1,31 @@
+/* Badges */
+/* Este badge no lo hice yo, lo saque de la IA de Gemini 3.1, es un estilo comun que se encuentra en muchas paginas, y me parecio que le daba un toque estetico mejor al proyecto, ademas de ser mas rapido implementarlo de esta forma que hacerlo manualmente. Ya que solo estaba usando divs originalmente con colores y bordes.*/
+
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-block;
+}
+.badge.transit {
+  background: #fff3e0;
+  color: #e65100;
+}
+.badge.received {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.badge.anulado {
+  background: #ffebee;
+  color: #c62828;
+}
+.badge.entrada {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+.badge.salida {
+  background: #FFEBEE;
+  color: #C62828;
+}

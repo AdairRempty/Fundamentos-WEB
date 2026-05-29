@@ -1,0 +1,62 @@
+/* Sidebar */
+.sidebar {
+  background: var(--surface-solid);
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-item {
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: rgba(46, 125, 50, 0.1);
+  color: var(--primary-dark);
+}
+
+.dashboard-grid.collapsed .sidebar,
+.dashboard-grid.collapsed ecotrack-sidebar {
+  transform: translateX(-100%);
+  padding: 2rem 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Custom Minimalist Scrollbar para la Sidebar */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
+}
+.sidebar:hover {
+  scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+}

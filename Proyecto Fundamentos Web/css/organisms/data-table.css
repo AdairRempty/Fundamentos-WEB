@@ -1,0 +1,187 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.025);
+  color: var(--text-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.data-table th:hover {
+  background: rgba(46, 125, 50, 0.06) !important;
+  color: var(--primary-dark);
+}
+
+.data-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+/* Prevent date/id columns from wrapping */
+.data-table td:first-child,
+.data-table td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* Action buttons cell — always single row */
+.data-table td:last-child {
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 0.75rem;
+}
+
+.data-table td:last-child .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 50%;
+  margin-left: 0.25rem;
+  font-size: 1rem;
+}
+
+.data-table tbody tr {
+  transition: background 0.15s;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(46, 125, 50, 0.04);
+}
+
+.data-table td:nth-last-child(2),
+.data-table th:nth-last-child(2) {
+  text-align: center !important;
+}
+
+/* Responsive */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--border-radius);
+}
+
+/* Indicadores para el el tipo de ordenamiento con flechitas */
+.th-sort-asc::after {
+  content: ' ▲';
+  font-size: 0.7em;
+  color: var(--primary);
+}
+
+.th-sort-desc::after {
+  content: ' ▼';
+  font-size: 0.7em;
+  color: var(--primary);
+}
+
+.table-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.table-search-wrapper .search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.table-search-wrapper .search-input-wrap i {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--text-light);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.table-search-wrapper input.table-search {
+  padding: 0.55rem 1rem 0.55rem 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  background: var(--surface);
+  color: var(--text-main);
+  width: 220px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.table-search-wrapper input.table-search:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+  width: 270px;
+}
+
+.search-column-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  background: var(--surface);
+  color: var(--text-light);
+  cursor: pointer;
+  appearance: auto;
+}
+
+.entrada-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.entrada-row:hover {
+  background: rgba(46, 125, 50, 0.06) !important;
+}
+
+.entrada-row td {
+  padding: 0.8rem 1rem;
+}
+
+.selected-row {
+  background: rgba(46, 125, 50, 0.12) !important;
+  outline: 2px solid var(--primary);
+}
+
+/* Tabla para formularios */
+.table-secondary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table-secondary th {
+  border: 1px solid var(--border);
+  padding: 0.8rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  color: var(--text-main);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table-secondary td {
+  border: 1px solid var(--border);
+  padding: 0.8rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.4);
+}

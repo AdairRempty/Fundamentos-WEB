@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Directorio de Empresas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/admin_style.css">
+</head>
+<body>
+    <div class="dashboard-grid">
+        <ecotrack-sidebar role="admin" active-page="empresas"></ecotrack-sidebar>
+        <main>
+            <ecotrack-topbar title="Directorio General Operativo"></ecotrack-topbar>
+
+            <div class="main-content">
+                <div class="dashboard-card animate-up">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.25rem;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary-gradient);display:flex;align-items:center;justify-content:center;">
+                            <i class="ph ph-buildings" style="color:#fff;font-size:1.1rem;"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin:0;">Alta de Nueva Empresa</h3>
+                            <p style="margin:0;color:var(--text-light);font-size:0.82rem;">Generadores, Transportistas o Destinos Finales autorizados.</p>
+                        </div>
+                    </div>
+                    <hr style="border:none;border-top:1px solid var(--border-color);margin:1rem 0 1.25rem;">
+                    <form id="empresaForm" class="form-grid">
+                        <div class="form-field">
+                            <label class="form-label"><i class="ph ph-identification-card"></i> Razón Social <span style="color:#d32f2f">*</span></label>
+                            <input type="text" id="em_razon" class="form-control" placeholder="Nombre legal completo" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label"><i class="ph ph-hash"></i> RFC <span style="color:#d32f2f">*</span></label>
+                            <input type="text" id="em_rfc" class="form-control" placeholder="Ej. ABC1234567X01" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label"><i class="ph ph-user"></i> Contacto Principal</label>
+                            <input type="text" id="em_contacto" class="form-control" placeholder="Nombre completo del representante">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label"><i class="ph ph-tag"></i> Giro / Tipo <span style="color:#d32f2f">*</span></label>
+                            <select id="em_giro" class="form-control" required>
+                                <option value="">Seleccionar giro...</option>
+                                <option value="Generador Industrial">Generador Industrial (Cliente)</option>
+                                <option value="Transportista Autorizado">Transportista Autorizado</option>
+                                <option value="Centro de Acopio">Centro de Acopio / Planta de Tratamiento</option>
+                            </select>
+                        </div>
+                        <div class="form-field" style="grid-column: 1 / -1;">
+                            <label class="form-label"><i class="ph ph-map-pin"></i> Dirección Fiscal / Patio</label>
+                            <input type="text" id="em_direccion" class="form-control" placeholder="Calle, número, colonia, municipio, C.P.">
+                        </div>
+                        <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn-primary"><i class="ph ph-plus-circle"></i> Registrar Entidad Operativa</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="dashboard-card animate-up" style="animation-delay: 0.1s;">
+                    <h3>Directorio Activo DB</h3>
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;"><input type="text" class="table-search form-control" data-target="empresasTableBody" placeholder="Buscar empresa..." style="max-width: 300px;"></div>
+                    <div class="table-responsive">
+                        <table class="data-table" style="margin-top: 0;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Razón Social</th>
+                                    <th>RFC</th>
+                                    <th>Dirección / Patio</th>
+                                    <th>Contacto</th>
+                                    <th>Giro / Tipo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="empresasTableBody">
+                                <tr><td colspan="6" style="text-align: center;">Cargando empresas...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Editar Empresa -->
+    <div class="modal-overlay" id="editEmpresaModal">
+        <div class="modal-box" style="max-width: 500px;">
+            <div class="modal-header">
+                <div>
+                    <h2><i class="ph ph-buildings"></i> Editar Empresa</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarEditEmpresaModal()">✕</button>
+            </div>
+            <form id="editEmpresaForm">
+                <div class="modal-body form-grid" style="padding: 1.5rem;">
+                    <input type="hidden" id="edit_em_id">
+                    <div style="grid-column: 1 / -1;"><label>Razón Social</label><input type="text" id="edit_em_razon" class="form-control" required></div>
+                    <div style="grid-column: 1 / -1;"><label>RFC</label><input type="text" id="edit_em_rfc" class="form-control" required></div>
+                    <div style="grid-column: 1 / -1;"><label>Contacto</label><input type="text" id="edit_em_contacto" class="form-control"></div>
+                    <div style="grid-column: 1 / -1;">
+                        <label>Giro (Rol)</label>
+                        <select id="edit_em_giro" class="form-control" required>
+                            <option value="Generador Industrial">Generador Industrial (Cliente)</option>
+                            <option value="Transportista Autorizado">Transportista Autorizado</option>
+                            <option value="Centro de Acopio">Centro de Acopio / Planta de Tratamiento</option>
+                        </select>
+                    </div>
+                    <div style="grid-column: 1 / -1;"><label>Dirección</label><input type="text" id="edit_em_direccion" class="form-control"></div>
+                </div>
+                <div class="modal-footer" style="justify-content: flex-end;">
+                    <button type="button" class="btn btn-outline" onclick="cerrarEditEmpresaModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/components/sidebar.js"></script>
+    <script src="js/components/topbar.js"></script>
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/molecules/tables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/admin-empresas.js"></script>
+</body>
+</html>

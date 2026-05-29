@@ -1,0 +1,20 @@
+/* Atomos */
+@import url("atoms/variables.css");
+@import url("atoms/typography.css");
+@import url("atoms/buttons.css");
+@import url("atoms/animations.css");
+@import url("atoms/utilities.css");
+@import url("atoms/badges.css");
+
+/* Moleculas */
+@import url("molecules/dashboard-card.css");
+@import url("molecules/search-panel.css");
+
+/* Organismos */
+@import url("organisms/sidebar.css");
+@import url("organisms/topbar.css");
+@import url("organisms/data-table.css");
+@import url("organisms/modal.css");
+
+/* Plantillas */
+@import url("templates/dashboard-layout.css");

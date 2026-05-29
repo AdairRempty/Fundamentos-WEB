@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Dashboard Administrador</title>
+    <link rel="stylesheet" href="css/style.css?v=9">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/admin_style.css">
+</head>
+<body>
+
+    <div class="dashboard-grid">
+        <!-- Sidebar Component -->
+        <ecotrack-sidebar role="admin" active-page="manifiestos"></ecotrack-sidebar>
+        <!-- Tuve que usar main para que el dashboard no se mezclara y funcione correctamente para el rol de administrador -->
+        <main>
+            <!-- Topbar Component -->
+            <ecotrack-topbar title="Panel de Administración"></ecotrack-topbar>
+
+            <div class="main-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3>Gestión de Manifiestos</h3>
+                    <a href="nuevo_manifiesto.html" class="btn btn-primary">+ Nuevo Manifiesto</a>
+                </div>
+
+                <div class="dashboard-card animate-up">
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;"><input type="text" class="table-search form-control" data-target="manifiestosTableBody" placeholder="Buscar..." style="max-width: 300px;"></div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Fecha</th>
+                                <th>Empresa Generadora</th>
+                                <th>Vehículo</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <!-- Tabla de manifiestos-->
+                        <tbody id="manifiestosTableBody">
+                            <tr><td colspan="6" style="text-align: center;">Cargando...</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/components/sidebar.js"></script>
+    <script src="js/components/topbar.js"></script>
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/molecules/tables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/admin-manifiestos.js?v=2"></script>
+
+    <!-- Modal Manifiesto -->
+    <div class="modal-overlay" id="manifestModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <h2><i class="ph ph-file-text"></i> Manifiesto de Residuos</h2>
+                    <p id="modal_folio">Folio: —</p>
+                </div>
+                <button class="modal-close" onclick="cerrarModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- Generador -->
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-buildings"></i> A. Datos del Generador (Empresa)</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Razón Social</label><span id="m_razon">—</span></div>
+                        <div class="manifest-field"><label>RFC / Reg. Ambiental</label><span id="m_rfc">—</span></div>
+                        <div class="manifest-field"><label>Giro / Actividad</label><span id="m_giro">—</span></div>
+                        <div class="manifest-field"><label>Responsable / Contacto</label><span id="m_contacto">—</span></div>
+                        <div class="manifest-field full"><label>Domicilio del Patio de Operaciones</label><span id="m_direccion">—</span></div>
+                    </div>
+                </div>
+                <!-- Transporte -->
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-truck"></i> B. Datos del Transporte</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Vehículo / Modelo</label><span id="m_modelo">—</span></div>
+                        <div class="manifest-field"><label>Número de Placas</label><span id="m_placas">—</span></div>
+                        <div class="manifest-field"><label>Operador / Chofer</label><span id="m_chofer">—</span></div>
+                        <div class="manifest-field"><label>Cap. de Carga (kg)</label><span id="m_cap">—</span></div>
+                    </div>
+                </div>
+                <!-- Residuos -->
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-list-dashes"></i> C. Identificación y Cantidad de Residuos</div>
+                    <div style="padding: 0 0 0.5rem;">
+                        <div class="manifest-residuo-row" style="background:var(--bg-color); font-weight:700; font-size:0.75rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.05em;">
+                            <span>Nombre / Código</span><span>Peso Bruto (kg)</span><span>Peso Neto (kg)</span>
+                        </div>
+                        <div id="m_residuos_list"><!-- JS inyecta filas aquí --></div>
+                    </div>
+                </div>
+                <!-- Destino -->
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-map-pin"></i> D. Centro de Acopio Receptor (Destino Final)</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Nombre del Receptor</label><span>EcoTrack — Centro de Acopio Central</span></div>
+                        <div class="manifest-field"><label>Estatus del Manifiesto</label><span id="m_estatus">—</span></div>
+                        <div class="manifest-field"><label>Fecha del Manifiesto</label><span id="m_fecha">—</span></div>
+                        <div class="manifest-field"><label>Folio</label><span id="m_folio2">—</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="cerrarModal()"><i class="ph ph-x"></i> Cerrar</button>
+                <button class="btn btn-primary" onclick="window.print()"><i class="ph ph-printer"></i> Imprimir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Manifiesto -->
+    <div class="modal-overlay" id="editManifiestoModal">
+        <div class="modal-box" style="max-width: 500px;">
+            <div class="modal-header">
+                <div>
+                    <h2><i class="ph ph-file-text"></i> Editar Manifiesto</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarEditManifiestoModal()">✕</button>
+            </div>
+            <form id="editManifiestoForm">
+                <div class="modal-body form-grid" style="padding: 1.5rem;">
+                    <input type="hidden" id="edit_man_id">
+                    <input type="hidden" id="edit_man_veh_val">
+                    <div style="grid-column: 1 / -1;"><label>Folio</label><input type="text" id="edit_man_folio" class="form-control" required></div>
+                    <div style="grid-column: 1 / -1;"><label>Fecha de Salida</label><input type="date" id="edit_man_fecha" class="form-control" required></div>
+                    <div style="grid-column: 1 / -1;">
+                        <label>Estatus</label>
+                        <select id="edit_man_estatus" class="form-control" required>
+                            <option value="En Tránsito">En Tránsito</option>
+                            <option value="Recibido">Recibido (Acopio)</option>
+                            <option value="Tratado">Tratado (Destino Final)</option>
+                            <option value="Anulado">Anulado</option>
+                        </select>
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label>Vehículo Registrado</label>
+                        <select id="edit_man_vehiculo" class="form-control" required>
+                            <option value="">Cargando vehículos...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: flex-end;">
+                    <button type="button" class="btn btn-outline" onclick="cerrarEditManifiestoModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

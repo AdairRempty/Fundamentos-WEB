@@ -1,0 +1,103 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary, #555);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.form-label i {
+  font-size: 0.95rem;
+  color: var(--primary-color, #2e7d32);
+  opacity: 0.85;
+}
+
+.form-field .form-control {
+  border: 1.5px solid var(--border-color, #e0e0e0);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  background: var(--surface, #fafafa);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.form-field .form-control:focus {
+  outline: none;
+  border-color: var(--primary-color, #2e7d32);
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+  background: #fff;
+}
+
+.form-field .form-control::placeholder {
+  color: #bbb;
+  font-size: 0.85rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+  padding-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px, solid var(--border_color, #000000);
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+}
+
+.form-control-glass {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.5);
+  margin-top: 0.5rem;
+  transition: var(--transition, 0.3s ease);
+}
+
+.form-control-glass:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}

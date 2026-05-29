@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Contáctanos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <ecotrack-navbar></ecotrack-navbar>
+
+    <section class="container mt-2" style="padding-top: 6rem; padding-bottom: 4rem;">
+        <div class="text-center mb-2 animate-up">
+            <h2>Contacto</h2>
+            <p style="color: var(--text-secondary, #434343);">¿Tienes alguna pregunta? ¡Estamos aquí para ayudarte!</p>
+        </div>
+
+        <div class="wrapper animate-up" style="animation-delay: 0.1s;">
+            <!-- Información de Contacto -->
+            <div class="glass-panel info-card">
+                <h3 style="margin-bottom: 1rem;">Información de Contacto</h3>
+                <p style="margin-bottom: 1rem; color: var(--text-secondary, #434343);">Comunícate con nosotros para cualquier duda sobre la gestión ambiental de tu empresa o el registro de manifiestos.</p>
+
+                <div class="info-item">
+                    <i class="ph-fill ph-map-pin"></i>
+                    <div>
+                        <strong>Dirección</strong>
+                        <p>Zona Industrial, San Luis Potosí, S.L.P.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="ph-fill ph-phone"></i>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>+52 (123) 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="ph-fill ph-envelope-open"></i>
+                    <div>
+                        <strong>Correo Electrónico</strong>
+                        <p>contacto@ecotrack.com.mx</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="ph-fill ph-hourglass"></i>
+                    <div>
+                        <strong>Horario de Atención</strong>
+                        <p>Lunes a Sabado: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <div class="glass-panel" style="padding: 2.5rem;">
+                <h3 style="margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label class="form-label" for="nombre"><i class="ph ph-user"></i> Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control"
+                                placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="empresa"><i class="ph ph-buildings"></i> Empresa</label>
+                            <input type="text" id="empresa" name="empresa" class="form-control" placeholder="Opcional">
+                        </div>
+                    </div>
+
+                    <div class="form-field mt-2">
+                        <label class="form-label" for="email"><i class="ph ph-envelope"></i> Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+                    
+                    <!-- Seguramente esto deberia de ser dinamico pero ya no voy a estar pensando en eso,  se queda como HTML basico-->
+                    <div class="form-field mt-2">
+                        <label class="form-label" for="asunto"><i class="ph ph-chat-circle"></i> Asunto</label>
+                        <select id="asunto" name="asunto" class="form-control" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="duda">Dudas generales</option>
+                            <option value="registro">Problemas con registro</option>
+                            <option value="servicio">Solicitar servicios de recolección</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field mt-2">
+                        <label class="form-label" for="mensaje"><i class="ph ph-pencil-simple"></i> Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" class="form-control" rows="4"
+                            placeholder="Escribe tu mensaje aquí..." required style="resize: vertical;"></textarea>
+                    </div>
+
+                    <div class="form-field mt-2" style="margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 1rem;">
+                            <i class="ph ph-paper-plane-right"></i> Enviar Mensaje
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/components/navbar.js"></script>
+    <script src="js/main.js?v=9"></script>
+</body>
+
+</html>

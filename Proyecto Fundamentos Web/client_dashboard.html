@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack | Portal de Cliente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin_style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="dashboard-grid">
+        <!-- Sidebar -->
+        <ecotrack-sidebar role="client" active-page="manifiestos"></ecotrack-sidebar>
+
+        <!-- Main -->
+        <main>
+            <!-- Topbar -->
+            <ecotrack-topbar title="Portal de Cliente"></ecotrack-topbar>
+
+            <div class="main-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3>Historial de Entregas</h3>
+                    <button class="btn btn-primary" onclick="abrirSolicitudModal()">Solicitar Recoleccion</button>
+                </div>
+
+                <div class="dashboard-card animate-up">
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;"><input type="text" class="table-search form-control" data-target="clientManifiestosTableBody" placeholder="Buscar en la tabla..." style="max-width: 300px;"></div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Fecha de Salida</th>
+                                <th>Centro de Acopio Destino</th>
+                                <th>Materiales (Estimado)</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientManifiestosTableBody">
+                            <tr><td colspan="6" style="text-align: center;">Cargando historial de tu empresa...</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/components/sidebar.js"></script>
+    <script src="js/components/topbar.js"></script>
+    <script src="js/atoms/ui.js"></script>
+    <script src="js/molecules/tables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pages/client-dashboard.js"></script>
+
+    <!-- Modal Detalle Manifiesto -->
+    <div class="modal-overlay" id="manifestModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <h2><i class="ph ph-file-text"></i> Manifiesto de Residuos</h2>
+                    <p id="modal_folio">Folio: —</p>
+                </div>
+                <button class="modal-close" onclick="cerrarModal()">&#x2715;</button>
+            </div>
+            <div class="modal-body">
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-buildings"></i> A. Datos del Generador (Empresa)</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Razón Social</label><span id="m_razon">-</span></div>
+                        <div class="manifest-field"><label>RFC / Reg. Ambiental</label><span id="m_rfc">-</span></div>
+                        <div class="manifest-field"><label>Giro / Actividad</label><span id="m_giro">-</span></div>
+                        <div class="manifest-field"><label>Responsable / Contacto</label><span id="m_contacto">-</span></div>
+                        <div class="manifest-field full"><label>Domicilio del Patio de Operaciones</label><span id="m_direccion">-</span></div>
+                    </div>
+                </div>
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-truck"></i> B. Datos del Transporte</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Vehículo / Modelo</label><span id="m_modelo">-</span></div>
+                        <div class="manifest-field"><label>Número de Placas</label><span id="m_placas">-</span></div>
+                        <div class="manifest-field"><label>Operador / Chofer</label><span id="m_chofer">-</span></div>
+                        <div class="manifest-field"><label>Cap. de Carga (kg)</label><span id="m_cap">-</span></div>
+                    </div>
+                </div>
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-list-dashes"></i> C. Identificación y Cantidad de Residuos</div>
+                    <div style="padding: 0 0 0.5rem;">
+                        <div class="manifest-residuo-row" style="background:var(--bg-color); font-weight:700; font-size:0.75rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.05em;">
+                            <span>Nombre / Código</span><span>Peso Bruto (kg)</span><span>Peso Neto (kg)</span>
+                        </div>
+                        <div id="m_residuos_list"></div>
+                    </div>
+                </div>
+                <div class="manifest-section">
+                    <div class="manifest-section-title"><i class="ph ph-map-pin"></i> D. Centro de Acopio Receptor</div>
+                    <div class="manifest-grid">
+                        <div class="manifest-field"><label>Nombre del Receptor</label><span>EcoTrack — Centro de Acopio Central</span></div>
+                        <div class="manifest-field"><label>Estatus del Manifiesto</label><span id="m_estatus">-</span></div>
+                        <div class="manifest-field"><label>Fecha del Manifiesto</label><span id="m_fecha">-</span></div>
+                        <div class="manifest-field"><label>Folio</label><span id="m_folio2">-</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="cerrarModal()"><i class="ph ph-x"></i> Cerrar</button>
+                <button class="btn btn-primary" onclick="window.print()"><i class="ph ph-printer"></i> Imprimir</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="recoleccionModal">
+        <div class="modal-box" style="max-width: 520px;">
+            <div class="modal-header">
+                <div>
+                    <h2><i class="ph ph-truck"></i> Solicitar Recoleccion</h2>
+                    <p>Registra una solicitud para programar la recoleccion.</p>
+                </div>
+                <button class="modal-close" onclick="cerrarSolicitudModal()">&#x2715;</button>
+            </div>
+            <form id="recoleccionForm">
+                <div class="modal-body form-grid" style="padding: 1.5rem;">
+                    <div style="grid-column: 1 / -1;">
+                        <label>Fecha sugerida</label>
+                        <input type="date" id="rec_fecha" class="form-control" required>
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label>Materiales o descripcion</label>
+                        <input type="text" id="rec_materiales" class="form-control" placeholder="Ej. Carton, PET, tarimas">
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label>Observaciones</label>
+                        <textarea id="rec_observaciones" class="form-control" rows="3" placeholder="Notas para el equipo de recoleccion"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: flex-end;">
+                    <button type="button" class="btn btn-outline" onclick="cerrarSolicitudModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
